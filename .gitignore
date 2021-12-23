@@ -1,4 +1,6 @@
 
-src/main/resources/database.properties
+
 target/
 out/
+
+*.properties

@@ -23,4 +23,3 @@ insert software_practice.test values (1, 'fuck'),
 ```
 
 
-test LiuYan 11112222
