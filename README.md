@@ -22,3 +22,6 @@ insert software_practice.test values (1, 'fuck'),
                             (2, 'you'),
                             (3, 'ssm');
 ```
+
+
+目前idea配置上传导致冲突无法运行，正在尝试修改
