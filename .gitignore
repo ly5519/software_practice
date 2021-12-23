@@ -44,5 +44,6 @@
 
 hs_err_pid*
 target/
+tou/
 
 .idea/
