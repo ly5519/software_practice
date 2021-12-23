@@ -11,7 +11,7 @@
 
 ===================
 ## 数据库测试用例
-```sql
+```mysql
 create database software_practice;
 create table software_practice.test(
     id int not null ,
@@ -21,3 +21,6 @@ insert software_practice.test values (1, 'fuck'),
                             (2, 'you'),
                             (3, 'ssm');
 ```
+
+
+test LiuYan
