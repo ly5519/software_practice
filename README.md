@@ -9,7 +9,8 @@
 6、成绩打印功能。  
 
 
-===================
+![image](https://user-images.githubusercontent.com/77131638/147187242-2e7423c8-4f1a-47d7-b399-b8465588fa9d.png)
+
 ## 数据库测试用例
 ```sql
 create database software_practice;
