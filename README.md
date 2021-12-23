@@ -12,7 +12,7 @@
 ![image](https://user-images.githubusercontent.com/77131638/147187242-2e7423c8-4f1a-47d7-b399-b8465588fa9d.png)
 
 ## 数据库测试用例
-```sql
+```mysql
 create database software_practice;
 create table software_practice.test(
     id int not null ,
@@ -24,7 +24,9 @@ insert software_practice.test values (1, 'fuck'),
 ```
 
 
+
 目前idea配置上传导致冲突无法运行，正在尝试修改
 
 
 更新了忽略文件策略，忽略了idea大部分配置文件
+
