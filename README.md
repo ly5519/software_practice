@@ -25,3 +25,6 @@ insert software_practice.test values (1, 'fuck'),
 
 
 目前idea配置上传导致冲突无法运行，正在尝试修改
+
+
+更新了忽略文件策略，忽略了idea大部分配置文件
