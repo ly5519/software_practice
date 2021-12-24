@@ -190,3 +190,15 @@ CREATE TABLE `student_with_course` (
 );
 
 ```
+
+### 测试用例
+
+```sql
+INSERT INTO software_practice.admin (username, password) VALUES ('qlf', '123');
+INSERT INTO software_practice.course (id, name, period, credit, properties, capacity, selected, exam_type, detail) VALUES (1, 'ssm', 3, 30, '计算机 必修', 80, 0, '大作业考察', 'smk');
+INSERT INTO software_practice.major (id, name) VALUES (10, '计算机');
+INSERT INTO software_practice.student (id, name, sex, age, username, password, major, enrollment) VALUES (1, 'qlf', '男', 100, 'qlf', '123456', 10, '2021-09-01');
+INSERT INTO software_practice.student_with_course (student_id, course_id, grade) VALUES (1, 1, 1);
+INSERT INTO software_practice.teacher (id, name, sex, age, username, password) VALUES (1, '陈继立', '女', 29, 'cjl', '123456');
+INSERT INTO software_practice.teacher_with_course (teacher_id, course_id, place, time) VALUES (1, 10, null, null);
+```
