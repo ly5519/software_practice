@@ -28,7 +28,7 @@ insert software_practice.test values (1, 'fuck'),
 ![image](https://user-images.githubusercontent.com/77131638/147310779-6f67aa08-dd3d-40ce-9740-db9d58ade21b.png)
 
 
-
+## 导出最基础的sql
 ```sql
 CREATE TABLE `course` (
   `id` int,
@@ -93,6 +93,8 @@ CREATE TABLE `sutdent_with_course` (
 
 ```
 
+
+## 修饰过的sql
 ```sql
 CREATE TABLE `course` (
     #课程号
