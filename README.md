@@ -25,8 +25,66 @@ insert software_practice.test values (1, 'fuck'),
 
 
 
-目前idea配置上传导致冲突无法运行，正在尝试修改
+```sql
+CREATE TABLE `course` (
+  `id` int,
+  `name` varchar(20),
+  `period` int,
+  `credit` float,
+  `detail` varchar(100),
+  `properties` varchar(20),
+  `cpacity` int,
+  `selected` int,
+  `eaxm_type` varchar(20),
+  PRIMARY KEY (`id`)
+);
 
+CREATE TABLE `student` (
+  `id` int,
+  `name` varchar(50),
+  `sex` varchar(10),
+  `age` int,
+  `username` varchar(20),
+  `password` varchar(20),
+  `major` int,
+  `enrollment` Date,
+  PRIMARY KEY (`id`)
+);
 
-更新了忽略文件策略，忽略了idea大部分配置文件
+CREATE TABLE `teacher` (
+  `id` int,
+  `name` varchar(20),
+  `sex` varchar(10),
+  `age` int,
+  `username` varchar(20),
+  `password` varchar(20),
+  PRIMARY KEY (`id`)
+);
 
+CREATE TABLE `admin` (
+  `username` varchar(20),
+  `password` varchar(20),
+  PRIMARY KEY (`username`)
+);
+
+CREATE TABLE `major` (
+  `id` int,
+  `name` varchar(20),
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `teacher_with_course` (
+  `teacher_id` int,
+  `course_id` int,
+  `place` varchar(20),
+  `time` varchar(20)
+);
+
+CREATE TABLE `sutdent_with_course` (
+  `student_id` int,
+  `course_id` int,
+  `grade` float,
+  PRIMARY KEY (`student_id`, `course_id`)
+);
+
+```
