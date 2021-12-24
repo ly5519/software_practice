@@ -92,3 +92,101 @@ CREATE TABLE `sutdent_with_course` (
 );
 
 ```
+
+```sql
+CREATE TABLE `course` (
+    #课程号
+  `id` int,
+    #课程名
+  `name` varchar(20) not null ,
+    #学时
+  `period` int not null not null ,
+    #学分
+  `credit` float not null ,
+    #课程介绍
+  `detail` varchar(100) ,
+    #必修/选修
+  `properties` varchar(20) not null ,
+    #课程容量
+  `capacity` int not null ,
+    #已选人数
+  `selected` int not null ,
+    #考试性质 正常考试/考察
+  `exam_type` varchar(20) not null ,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `student` (
+    #学号
+  `id` int not null ,
+    #姓名
+  `name` varchar(50) not null ,
+    #性别
+  `sex` varchar(10) not null ,
+    #年龄
+  `age` int not null ,
+    #用户名
+  `username` varchar(20) not null ,
+    #登陆密码
+  `password` varchar(20) not null ,
+    #专业代码
+  `major` int not null ,
+    #入学年份
+  `enrollment` Date not null ,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `teacher` (
+    #工号
+  `id` int not null ,
+    #姓名
+  `name` varchar(20) not null ,
+    #性别
+  `sex` varchar(10) not null ,
+    #年龄
+  `age` int not null ,
+    #用户名
+  `username` varchar(20) not null ,
+    #登陆密码
+  `password` varchar(20) not null ,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `admin` (
+    #用户名
+  `username` varchar(20) not null ,
+    #登陆密码
+  `password` varchar(20) not null ,
+  PRIMARY KEY (`username`)
+);
+
+CREATE TABLE `major` (
+    #专业代码
+  `id` int not null ,
+    #专业名称
+  `name` varchar(20) not null ,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `teacher_with_course` (
+    #工号
+  `teacher_id` int not null ,
+    #课程号
+  `course_id` int not null ,
+    #上课地点
+  `place` varchar(20),
+    #上课时间
+  `time` varchar(20)
+);
+
+CREATE TABLE `student_with_course` (
+    #学号
+  `student_id` int not null ,
+    #课程号
+  `course_id` int not null ,
+    #课程成绩
+  `grade` float not null ,
+  PRIMARY KEY (`student_id`, `course_id`)
+);
+
+```
