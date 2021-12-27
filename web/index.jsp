@@ -12,9 +12,9 @@
   </head>
   <body>
   <a href="${pageContext.request.contextPath}/testHello">test</a>
-
   <br>
-
   <a href="${pageContext.request.contextPath}/hello">print test</a>
+
   </body>
+
 </html>

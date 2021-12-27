@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    hello html
+    <h1>message:</h1>
+    <h2 id="hello"></h2>
+    <button>click me </button>
+    <button>click me </button>
+    <script>
+        // get now last 网址
+        // const pathArray = window.location.pathname.split('/');
+        // const secondLevelLocation = pathArray[1];
+        const loginUrl = window.location.protocol + "//"  + window.location.host;
+
+
+        const msg = document.getElementById('hello');
+
+        let btn = $("button");
+
+
+        btn.eq(0).click(function () {
+            $.ajax({
+                url: loginUrl + '/AJAX/helloTest',
+                method: 'GET',
+                // dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    msg.innerHTML = null;
+                },
+                error: function () {
+                    alert('aya error.');
+                }
+            })
+        });
+
+        btn.eq(1).click(function () {
+            $.ajax({
+                url: loginUrl + '/AJAX/fuckJSON',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.id);
+                    console.log(data.message);
+                    msg.innerHTML = JSON.stringify(data);
+                    },
+                error: function () {
+                    alert('aya error.');
+                }
+            })
+        });
+
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('GET', '')
+    </script>
 </body>
 </html>
