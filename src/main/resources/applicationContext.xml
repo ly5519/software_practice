@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="
+
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       ">
+
+
+    <!--    auto to scan package, let the package's comment be valid-->
+    <context:component-scan base-package="com.team.controller"/>
+    <!--    make MVC don't manage static resources-->
+    <mvc:default-servlet-handler/>
+    <!--    deploy Mapping and Adapter-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=utf-8</value>
+                        <value>text/html;charset=utf-8</value>
+                        <value>application/x-www-form-urlencoded</value>
+                    </list>
+                </property>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="internalResourceViewResolver">
+        <property name="prefix" value="/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!-- 定义 文件 解释器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置默认编码 -->
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 上传图片最大大小5M-->
+        <property name="maxUploadSize" value="5242440"/>
+    </bean>
+
+
+
+
+    <!--    dao-->
+
+    <context:property-placeholder location="classpath:database.properties"/>
+
+    <!--    DataSource: use spring's jdbc  replace mybatis config-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl"
+                  value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="maxPoolSize" value="30"/>
+        <property name="minPoolSize" value="10"/>
+        <property name="autoCommitOnClose" value="false"/>
+        <property name="checkoutTimeout" value="10000"/>
+        <property name="acquireRetryAttempts" value="2"/>
+    </bean>
+
+    <!--    sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.team.dao"/>
+    </bean>
+
+
+    <!--    service-->
+    <context:component-scan base-package="com.team.service"/>
+
+<!--Impl-->
+
+    <bean id="studentService" class="com.team.service.StudentServiceImpl">
+        <property name="studentMapper" ref="studentMapper"/>
+    </bean>
+
+    <bean id="courseService" class="com.team.service.CourseServiceImpl">
+        <property name="courseMapper" ref="courseMapper"/>
+    </bean>
+
+    <bean id="swcService" class="com.team.service.SwCImpl">
+        <property name="swCMapper" ref="swCMapper"/>
+    </bean>
+
+
+
+
+    <!--事务-->
+
+    <!--    注解事务-->
+    <!--    <tx:jta-transaction-manager/>-->
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.team.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
+    </aop:config>
+
+</beans>

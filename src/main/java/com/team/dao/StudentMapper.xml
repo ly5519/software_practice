@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.dao.StudentMapper">
+
+    
+    <select id="selectStudentById" resultMap="student_major">
+        SELECT s.id AS sId, s.name AS sName, s.sex, s.age, s.username, s.password, s.major, s.enrollment, m.id AS mId, m.name AS mName
+        FROM student s
+        JOIN major m on m.id = s.major
+        WHERE s.id = #{id}
+    </select>
+
+    <resultMap id="student_major" type="student">
+        <result property="id" column="sId"/>
+        <result property="name" column="sName"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="enrollment" column="enrollment"/>
+        <association property="major" javaType="major">
+            <result property="id" column="mId"/>
+            <result property="name" column="mName"/>
+        </association>
+    </resultMap>
+
+
+
+</mapper>

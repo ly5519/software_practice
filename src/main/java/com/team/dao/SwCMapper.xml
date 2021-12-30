@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.dao.SwCMapper">
+    <select id="selectCourseYouChoose" resultType="studentWithCourse">
+        SELECT *
+        FROM student_with_course
+        WHERE student_id = #{student_id}
+    </select>
+
+
+    <select id="selectCourseYouChooseType" resultType="studentWithCourse">
+        SELECT *
+        FROM student_with_course
+        WHERE student_id = #{student_id} AND course_id = #{course_id}
+    </select>
+
+    <insert id="elective" parameterType="int">
+        INSERT INTO student_with_course(student_id, course_id)
+        VALUE (#{student_id}, #{course_id})
+    </insert>
+
+    <delete id="removedCourse" parameterType="int">
+        DELETE FROM student_with_course
+        WHERE course_id = #{course_id} AND student_id = #{student_id}
+    </delete>
+
+
+</mapper>
