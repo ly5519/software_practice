@@ -9,4 +9,5 @@ import java.util.List;
 public interface CourseService {
   List<Course> SelectCourseByProperties(String name);
   Course selectCourseById(int id);
+  boolean whetherMust(int id);
 }

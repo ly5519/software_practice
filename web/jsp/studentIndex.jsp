@@ -6,7 +6,7 @@
   Time: 11:17 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>登录成功</title>
@@ -26,9 +26,7 @@
             <td>${course.capacity}</td>
             <td>${course.selected}</td>
             <td>${course.examType}</td>
-            <td>
-                <a href="${pageContext.request.contextPath}/course/chooseCourse?id=${sid}&cid=${course.id}">给朕选上！</a>
-            </td>
+
         </tr>
         <br/>
     </c:forEach>
@@ -74,6 +72,7 @@
 
 <div>
     <h2>您已经选的课</h2>
+
     <c:forEach var="course" items="${yourCourses}">
         <tr>
             <td>${course.id}</td>
