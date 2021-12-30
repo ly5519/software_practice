@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentWithCourse{
-    private Integer studentId;
-    private Integer courseId;
+    private Student studentId;
+    private Course courseId;
     private Double grade;
 }

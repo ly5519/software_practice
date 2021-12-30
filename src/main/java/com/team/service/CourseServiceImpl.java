@@ -26,4 +26,13 @@ public class CourseServiceImpl implements CourseService{
   public Course selectCourseById(int id) {
     return courseMapper.selectCourseById(id);
   }
+
+  @Override
+  public boolean whetherMust(int id) {
+    Course course = courseMapper.selectCourseById(id);
+    String properties = course.getProperties();
+    String must = properties.substring(properties.length()-2);
+    return "必修".equals(must);
+
+  }
 }

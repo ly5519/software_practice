@@ -4,16 +4,73 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.team.dao.SwCMapper">
-    <select id="selectCourseYouChoose" resultType="studentWithCourse">
-        SELECT *
-        FROM student_with_course
+
+    <resultMap id="swc" type="studentWithCourse">
+        <result property="grade" column="grade"/>
+        <association property="studentId" javaType="student">
+            <result property="id" column="sId"/>
+            <result property="name" column="sName"/>
+            <result property="sex" column="sex"/>
+            <result property="age" column="age"/>
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+            <result property="enrollment" column="enrollment"/>
+        </association>
+        <association property="courseId" javaType="course">
+            <result property="name" column="cName"/>
+            <result property="id" column="cId"/>
+            <result property="period" column="period"/>
+            <result property="credit" column="credit"/>
+            <result property="detail" column="detail"/>
+            <result property="properties" column="properties"/>
+            <result property="capacity" column="capacity"/>
+            <result property="selected" column="selected"/>
+            <result property="examType" column="examType"/>
+        </association>
+    </resultMap>
+
+    <select id="selectCourseYouChoose" resultMap="swc">
+        SELECT s.id AS sId,
+               s.name AS sName,
+               sex,
+               age,
+               username,
+               password,
+               enrollment,
+               c.id AS cId,
+               c.name AS cName,
+               period,
+               credit,
+               properties,
+               capacity,
+               selected,
+               exam_type
+        FROM student_with_course swc
+        JOIN course c on c.id = swc.course_id
+        JOIN student s on s.id = swc.student_id
         WHERE student_id = #{student_id}
     </select>
 
 
-    <select id="selectCourseYouChooseType" resultType="studentWithCourse">
-        SELECT *
-        FROM student_with_course
+    <select id="selectCourseYouChooseType" resultMap="swc">
+        SELECT s.id AS sId,
+               s.name AS sName,
+               sex,
+               age,
+               username,
+               password,
+               enrollment,
+               c.id AS cId,
+               c.name AS cName,
+               period,
+               credit,
+               properties,
+               capacity,
+               selected,
+               exam_type
+        FROM student_with_course swc
+                 JOIN course c on c.id = swc.course_id
+                 JOIN student s on s.id = swc.student_id
         WHERE student_id = #{student_id} AND course_id = #{course_id}
     </select>
 

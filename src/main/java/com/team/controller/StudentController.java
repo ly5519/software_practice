@@ -61,7 +61,7 @@ public class StudentController {
     }
 
     if (password.equals(student.getPassword())) {
-      return "forward:/student/studentIndex";
+      return "forward:/course/autoChoose";
     }else {
       return "loginFailure";
     }
@@ -74,15 +74,11 @@ public class StudentController {
     model.addAttribute("sid", student.getId());
 
     String course = student.getMajor().getName();
-    List<Course> courses1 = new ArrayList<>();
+    List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");
     List<Course> courses2 = new ArrayList<>();
     List<Course> courses3 = new ArrayList<>();
 
-    for (Course testData : courseService.SelectCourseByProperties(course + " 必修")) {
-      if (swCService.selectCourseYouChooseType(id, testData.getId()) == null){
-        courses1.add(testData);
-      }
-    }
+
     for (Course testData : courseService.SelectCourseByProperties(course + " 选修")) {
       if (swCService.selectCourseYouChooseType(id, testData.getId()) == null){
         courses2.add(testData);
@@ -104,7 +100,7 @@ public class StudentController {
     List<Course> outYourCourses = new ArrayList<>();
     List<StudentWithCourse> yourCourses = swCService.selectCourseYouChoose(student.getId());
     for (StudentWithCourse co : yourCourses) {
-      outYourCourses.add(courseService.selectCourseById(co.getCourseId()));
+      outYourCourses.add(courseService.selectCourseById(co.getCourseId().getId()));
     }
 
     model.addAttribute("yourCourses", outYourCourses);
