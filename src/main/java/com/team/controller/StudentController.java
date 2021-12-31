@@ -52,18 +52,21 @@ public class StudentController {
   }
 
   @RequestMapping("/verify")
-  public String verify(int id, String password) {
+  public String verify(int id, String password, Model model) {
 
     Student student = studentService.selectStudentById(id);
 
     if (student == null) {
-      return "loginFailure";
+      model.addAttribute("msg", "用户名或密码错误");
+      return "login";
     }
+
 
     if (password.equals(student.getPassword())) {
       return "forward:/course/autoChoose";
     }else {
-      return "loginFailure";
+      model.addAttribute("msg", "用户名或密码错误");
+      return "login";
     }
   }
 

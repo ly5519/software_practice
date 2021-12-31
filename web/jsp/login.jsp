@@ -23,6 +23,7 @@
                 <input type="text" id="school_id" name="id"   placeholder="请输入学号" required>
                 <input type="password" id="password" name="password"  placeholder="请输入密码" required>
                 <input type="submit" class="login-btn" value="登录">
+                <h2>${msg}</h2>
             </div>
         </div>
     </div>
