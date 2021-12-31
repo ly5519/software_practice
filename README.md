@@ -24,8 +24,8 @@ insert software_practice.test values (1, 'fuck'),
 ```
 
 ## 数据库设计
+![Inked147310779-6f67aa08-dd3d-40ce-9740-db9d58ade21b](https://user-images.githubusercontent.com/77131638/147824323-7f946f12-cf03-444a-9da9-5c39250028c6.jpg)
 
-![image](https://user-images.githubusercontent.com/77131638/147310779-6f67aa08-dd3d-40ce-9740-db9d58ade21b.png)
 
 
 ## 导出最基础的sql
