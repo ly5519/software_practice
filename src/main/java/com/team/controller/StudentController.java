@@ -76,7 +76,7 @@ public class StudentController {
     model.addAttribute("name", student.getName());
     model.addAttribute("sid", student.getId());
 
-    String course = student.getMajor().getName();
+    String course = studentService.getMajorName(id);
     List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");
     List<Course> courses2 = new ArrayList<>();
     List<Course> courses3 = new ArrayList<>();

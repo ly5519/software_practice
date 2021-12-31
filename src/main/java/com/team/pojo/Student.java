@@ -15,6 +15,6 @@ public class Student{
     private Integer age;
     private String username;
     private String password;
-    private Major major;
+    private Integer major;
     private Date enrollment;
 }
