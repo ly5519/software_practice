@@ -46,4 +46,8 @@
         DELETE FROM student WHERE id = #{id}
     </delete>
 
+    <select id="getAdminPassword" resultType="string">
+        SELECT password FROM admin WHERE username = #{username}
+    </select>
+
 </mapper>
