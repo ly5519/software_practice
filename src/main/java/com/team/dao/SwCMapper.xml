@@ -85,4 +85,12 @@
     </delete>
 
 
+    <update id="updatedCourse" parameterType="int">
+        UPDATE student_with_course
+        SET grade = #{grade}
+        WHERE course_id = #{course_id}
+        AND student_id = #{student_id}
+    </update>
+
+
 </mapper>

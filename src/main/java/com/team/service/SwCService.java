@@ -10,4 +10,5 @@ public interface SwCService {
   StudentWithCourse selectCourseYouChooseType(int id,int number);
   void elective(int student_id, int course_id);
   void removedCourse(int student_id, int course_id);
+  void updatedCourse(int student_id, int course_id, int grade);
 }
