@@ -9,26 +9,24 @@
 <html>
 <head>
     <title>登录界面</title>
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 
-<div id="login">
-    <h1>欢迎光临，请登录（学生）</h1>
-    <form action="${pageContext.request.contextPath}/student/verify" method="post">
 
-        <label for="school_id">学号:</label>
-        <input type="text" id="school_id" name="id" required/>
-
-        <br/>
-
-        <label for="password">密码:</label>
-        <input type="password" name="password" id="password" required/>
-
-        <br/>
-
-        <input type="submit" value="提交"/>
-    </form>
-</div>
+<form action="${pageContext.request.contextPath}/student/verify" method="post">
+    <div class="content">
+        <div class="login-content">
+            <a href="" class="banner-box"></a>
+            <div class="login-box">
+                <h1>账号登录</h1>
+                <input type="text" id="school_id" name="id"   placeholder="请输入学号" required>
+                <input type="password" id="password" name="password"  placeholder="请输入密码" required>
+                <input type="submit" class="login-btn" value="登录">
+            </div>
+        </div>
+    </div>
+</form>
 
 </body>
 </html>
