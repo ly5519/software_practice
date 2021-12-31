@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath}/student/login">去登陆</a>
+        <a href="${pageContext.request.contextPath}/student/login">去登陆</a>
 
 </body>
 </html>
