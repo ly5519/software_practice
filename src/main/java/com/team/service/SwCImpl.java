@@ -27,6 +27,11 @@ public class SwCImpl implements SwCService{
   }
 
   @Override
+  public List<StudentWithCourse> selectSWCByCId(int id) {
+    return swCMapper.selectSWCByCId(id);
+  }
+
+  @Override
   public void elective(int student_id, int course_id) {
     swCMapper.elective(student_id, course_id);
   }

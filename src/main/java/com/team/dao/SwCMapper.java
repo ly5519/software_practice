@@ -13,6 +13,7 @@ import java.util.List;
 public interface SwCMapper {
   List<StudentWithCourse> selectCourseYouChoose(@Param("student_id") int id);
   StudentWithCourse selectCourseYouChooseType(@Param("student_id") int id, @Param("course_id")int number);
+  List<StudentWithCourse> selectSWCByCId(@Param("course_id") int id);
 
   //add
   void elective(@Param("student_id") int id, @Param("course_id")int number);
