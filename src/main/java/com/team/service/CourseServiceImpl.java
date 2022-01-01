@@ -28,6 +28,21 @@ public class CourseServiceImpl implements CourseService{
   }
 
   @Override
+  public void updateCourse(Course course) {
+    courseMapper.updateCourse(course);
+  }
+
+  @Override
+  public void insertCourse(Course course) {
+    courseMapper.insertCourse(course);
+  }
+
+  @Override
+  public void deleteCourseById(int id) {
+    courseMapper.deleteCourseById(id);
+  }
+
+  @Override
   public boolean whetherMust(int id) {
     Course course = courseMapper.selectCourseById(id);
     String properties = course.getProperties();

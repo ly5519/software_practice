@@ -112,6 +112,10 @@
         <property name="courseMapper" ref="courseMapper"/>
     </bean>
 
+    <bean id="majorService" class="com.team.service.MajorServiceImpl">
+        <property name="majorMapper" ref="majorMapper"/>
+    </bean>
+
     <bean id="swcService" class="com.team.service.SwCImpl">
         <property name="swCMapper" ref="swCMapper"/>
     </bean>

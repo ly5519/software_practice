@@ -56,18 +56,25 @@ public class StudentController {
 
     Student student = studentService.selectStudentById(id);
 
-    if (student == null) {
+    if (student == null || !password.equals(student.getPassword())) {
       model.addAttribute("msg", "用户名或密码错误");
       return "login";
-    }
-
-
-    if (password.equals(student.getPassword())) {
-      return "forward:/course/autoChoose";
     }else {
-      model.addAttribute("msg", "用户名或密码错误");
-      return "login";
+      return "forward:/course/autoChoose";
     }
+
+  }
+
+  @RequestMapping("/adminVerify")
+  public String adminVerify(String username, String password, Model model) {
+    String passwordTrue = studentService.getAdminPassword(username);
+    if (!password.equals(passwordTrue)) {
+      model.addAttribute("msg", "用户名或密码错误");
+      return "adminLogin";
+    }else {
+      return "adminIndex";
+    }
+
   }
 
   @RequestMapping("/studentIndex")
@@ -76,7 +83,7 @@ public class StudentController {
     model.addAttribute("name", student.getName());
     model.addAttribute("sid", student.getId());
 
-    String course = student.getMajor().getName();
+    String course = studentService.getMajorName(id);
     List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");
     List<Course> courses2 = new ArrayList<>();
     List<Course> courses3 = new ArrayList<>();

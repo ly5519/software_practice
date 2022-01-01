@@ -71,7 +71,7 @@ public class CourseController {
     List<StudentWithCourse> youCurrentCourses = swCService.selectCourseYouChoose(id);
 
     Student student = studentService.selectStudentById(id);
-    String course = student.getMajor().getName();
+    String course = studentService.getMajorName(id);
 
     if (youCurrentCourses.isEmpty()) {
       List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");

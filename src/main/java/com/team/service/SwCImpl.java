@@ -35,4 +35,9 @@ public class SwCImpl implements SwCService{
   public void removedCourse(int student_id, int course_id) {
     swCMapper.removedCourse(student_id, course_id);
   }
+
+  @Override
+  public void updatedCourse(int student_id, int course_id, int grade) {
+    swCMapper.updatedCourse(student_id, course_id, grade);
+  }
 }
