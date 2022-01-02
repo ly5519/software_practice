@@ -17,5 +17,5 @@ public interface StudentService {
   void addStudent(Student student);
   void updateStudent(Student student);
   void deleteStudentById(int id);
-  String getAdminPassword(String username);
+
 }

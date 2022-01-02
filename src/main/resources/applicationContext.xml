@@ -121,12 +121,17 @@
     </bean>
 
 
+    <bean id="adminService" class="com.team.service.AdminServiceImpl">
+        <property name="swCMapper" ref="swCMapper"/>
+        <property name="adminMapper" ref="adminMapper"/>
+    </bean>
 
 
     <!--事务-->
 
     <!--    注解事务-->
     <!--    <tx:jta-transaction-manager/>-->
+
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <constructor-arg ref="dataSource"/>
@@ -140,5 +145,4 @@
         <aop:pointcut id="serviceMethod" expression="execution(* com.team.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
     </aop:config>
-
 </beans>

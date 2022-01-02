@@ -25,7 +25,7 @@
             <result property="properties" column="properties"/>
             <result property="capacity" column="capacity"/>
             <result property="selected" column="selected"/>
-            <result property="examType" column="examType"/>
+            <result property="examType" column="exam_type"/>
         </association>
     </resultMap>
 
@@ -90,7 +90,8 @@
                properties,
                capacity,
                selected,
-               exam_type
+               exam_type,
+               grade
         FROM student_with_course swc
                  JOIN course c on c.id = swc.course_id
                  JOIN student s on s.id = swc.student_id
