@@ -26,6 +26,11 @@ public class AdminServiceImpl implements AdminService{
   }
 
   @Override
+  public Admin getAdminByUsername(String username) {
+    return adminMapper.selectAdminByUsername(username);
+  }
+
+  @Override
   public boolean thePasswordTrue(String user, String password) {
     Admin admin = adminMapper.selectAdminByUsername(user);
     return password.equals(admin.getPassword());

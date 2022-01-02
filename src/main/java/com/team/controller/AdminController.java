@@ -2,6 +2,7 @@ package com.team.controller;
 
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.team.pojo.Admin;
 import com.team.pojo.SWC;
 import com.team.pojo.StudentWithCourse;
 import com.team.service.AdminService;
@@ -40,7 +41,9 @@ public class AdminController {
 
   @RequestMapping("/index")
   public String index(String user, String password) {
-    if (adminService.thePasswordTrue(user, password)) {
+
+    Admin admin = adminService.getAdminByUsername(user);
+    if (admin != null && adminService.thePasswordTrue(user, password)) {
       return "/admin/index";
     }else return "/admin/Incorrect";
   }
@@ -56,7 +59,6 @@ public class AdminController {
   public String updateGrade(int course_id, int student_id, Model model) {
     StudentWithCourse oneSWC = adminService.getOneSWC(course_id, student_id);
     model.addAttribute("oneRecord", oneSWC);
-    System.out.println(oneSWC);
     return "admin/update";
   }
 
