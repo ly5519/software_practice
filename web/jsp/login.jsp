@@ -13,7 +13,7 @@
             <a href="https://www.baidu.com" class="banner-box"></a>
             <div class="login-box">
                 <h1>账号登录</h1>
-                <div id="msg">${msg}</div>
+                <div id="msg"><h3 style="color: azure">${msg}</h3></div>
                 <input type="text" id="school_id" name="id"   placeholder="请输入学号" required>
                 <input type="password" id="password" name="password"  placeholder="请输入密码" required>
                 <input type="submit" class="login-btn" value="登录">

@@ -14,4 +14,5 @@ import java.util.List;
 public interface AdminMapper {
   Admin selectAdminByUsername(String username);
   void updateSWC(SWC swc);
+
 }
