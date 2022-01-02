@@ -47,8 +47,5 @@ public class StudentServiceImpl implements StudentService{
     studentMapper.deleteStudentById(id);
   }
 
-  @Override
-  public String getAdminPassword(String username) {
-    return studentMapper.getAdminPassword(username);
-  }
+
 }

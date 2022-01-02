@@ -51,31 +51,8 @@ public class StudentController {
     return "login";
   }
 
-  @RequestMapping("/verify")
-  public String verify(int id, String password, Model model) {
 
-    Student student = studentService.selectStudentById(id);
 
-    if (student == null || !password.equals(student.getPassword())) {
-      model.addAttribute("msg", "用户名或密码错误");
-      return "login";
-    }else {
-      return "forward:/course/autoChoose";
-    }
-
-  }
-
-  @RequestMapping("/adminVerify")
-  public String adminVerify(String username, String password, Model model) {
-    String passwordTrue = studentService.getAdminPassword(username);
-    if (!password.equals(passwordTrue)) {
-      model.addAttribute("msg", "用户名或密码错误");
-      return "adminLogin";
-    }else {
-      return "adminIndex";
-    }
-
-  }
 
   @RequestMapping("/studentIndex")
   public String successPage(int id,Model model) {
