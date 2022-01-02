@@ -46,12 +46,35 @@ public class StudentController {
     this.swCService = swCService;
   }
 
+
+
+
+
   @RequestMapping("/login")
   public String login() {
     return "login";
   }
 
 
+  @RequestMapping("/verify")
+  public String verify(String id, String password, Model model) {
+    try {
+      int number = Integer.parseInt(id);
+      Student student = studentService.selectStudentById(number);
+      if (password.equals(student.getPassword())) {
+        model.addAttribute("id", number);
+        return "redirect:/student/studentIndex";
+      }else {
+        model.addAttribute("msg", "您输入的账号或密码有误！");
+        return "login";
+      }
+
+    }catch (Exception e) {
+      model.addAttribute("msg", "您输入的账号或密码有误！");
+      return "login";
+    }
+
+  }
 
 
 
@@ -97,6 +120,15 @@ public class StudentController {
     return "studentIndex";
   }
 
+
+
+  @RequestMapping("/showGrade")
+  public String show(int student_id, Model model) {
+    List<StudentWithCourse> list = swCService.selectCourseYouChoose(student_id);
+    model.addAttribute("grade", list);
+
+    return "showGrade";
+  }
 
 
 }

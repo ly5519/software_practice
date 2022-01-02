@@ -90,6 +90,8 @@
     </c:forEach>
 </div>
 
+<a href="${pageContext.request.contextPath}/student/showGrade?student_id=${sid}">查看成绩</a>
+
 
 </body>
 </html>
