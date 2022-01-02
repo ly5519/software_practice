@@ -53,6 +53,8 @@ public class StudentController {
 
 
 
+  }
+
 
   @RequestMapping("/studentIndex")
   public String successPage(int id,Model model) {

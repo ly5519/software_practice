@@ -1,5 +1,6 @@
 package com.team.controller;
 
+
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team.pojo.SWC;
 import com.team.pojo.StudentWithCourse;
@@ -14,6 +15,7 @@ import java.util.List;
 
 /**
  * Data 2022-01-02 13:06
+
  *
  * @author Liu_Yan
  */
@@ -29,8 +31,10 @@ public class AdminController {
 
 
 
+
   @RequestMapping("/login")
   public String login() {
+
     return "/admin/login";
   }
 
