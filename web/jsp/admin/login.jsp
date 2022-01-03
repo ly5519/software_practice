@@ -16,5 +16,7 @@
         <label for="password">password:</label><input type="password" id="password" name="password" required>
         <input type="submit">
     </form>
+    <br/>
+    <h3>${msg}</h3>
 </body>
 </html>

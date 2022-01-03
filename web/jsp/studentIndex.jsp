@@ -28,6 +28,7 @@
 
         <div class="row">
             <h1 class="text-right">您好, ${name} 同学</h1>
+            <h5 class="text-right"><a href="${pageContext.request.contextPath}/student/loginOut">注销</a></h5>
         </div>
 
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -40,12 +41,16 @@ public class AdminController {
   }
 
   @RequestMapping("/index")
-  public String index(String user, String password) {
+  public String index(String user, String password, HttpSession session, Model model) {
 
     Admin admin = adminService.getAdminByUsername(user);
     if (admin != null && adminService.thePasswordTrue(user, password)) {
+      session.setAttribute("adminInfo", user);
       return "/admin/index";
-    }else return "/admin/Incorrect";
+    }else {
+      model.addAttribute("msg", "密码用户名错误亲爱的");
+      return "admin/login";
+    }
   }
 
   @RequestMapping("/getCourse")

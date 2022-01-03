@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +54,9 @@ public class CourseController {
     this.majorService = majorService;
   }
 
+
+
+
   @RequestMapping("/chooseCourse")
   public String chooseCourse(int id, int cid) {
     swCService.elective(id, cid);
@@ -74,7 +78,8 @@ public class CourseController {
 
 
   @RequestMapping("/autoChoose")
-  public String autoCourse(int id){
+  public String autoCourse(HttpServletRequest request){
+    int id = (int) request.getSession().getAttribute("userInfo");
     //现有的所有课程
     List<StudentWithCourse> list = swCService.selectCourseYouChoose(id);
     ArrayList<Course> yourHaveCourse = new ArrayList<>();
@@ -98,7 +103,7 @@ public class CourseController {
 
 
 
-    return "forward:/student/studentIndex";
+    return "redirect:/student/studentIndex";
   }
 
 

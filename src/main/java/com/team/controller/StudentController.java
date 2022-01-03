@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,20 +53,23 @@ public class StudentController {
 
 
   @RequestMapping("/login")
-  public String login() {
+  public String login(Model model) {
+    model.addAttribute("msg", "年轻人不要太气盛！耗子为汁");
     return "login";
   }
 
 
   @RequestMapping("/verify")
-  public String verify(String id, String password, Model model) {
+  public String verify(String id, String password, Model model, HttpSession session) {
     try {
       int number = Integer.parseInt(id);
       Student student = studentService.selectStudentById(number);
       if (password.equals(student.getPassword())) {
 
-        model.addAttribute("id", number);
-        return "forward:/course/autoChoose";
+        // model.addAttribute("id", number);
+
+        session.setAttribute("userInfo", number);
+        return "redirect:/course/autoChoose";
       }else {
         model.addAttribute("msg", "您输入的账号或密码有误！");
         return "login";
@@ -78,9 +83,16 @@ public class StudentController {
   }
 
 
+  @RequestMapping("loginOut")
+  public String loginOut(HttpSession session) {
+    session.removeAttribute("userInfo");
+    return "login";
+  }
+
 
   @RequestMapping("/studentIndex")
-  public String successPage(int id,Model model) {
+  public String successPage(Model model, HttpServletRequest request) {
+    int id = (int) request.getSession().getAttribute("userInfo");
     Student student = studentService.selectStudentById(id);
     model.addAttribute("name", student.getName());
     model.addAttribute("sid", student.getId());
