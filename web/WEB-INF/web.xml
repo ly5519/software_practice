@@ -7,7 +7,7 @@
 
 <!--    指定首页-->
     <welcome-file-list>
-        <welcome-file>/jsp/login.jsp</welcome-file>
+        <welcome-file>/HTML/login.html</welcome-file>
     </welcome-file-list>
 
 
