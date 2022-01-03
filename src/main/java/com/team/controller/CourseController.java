@@ -1,9 +1,11 @@
 package com.team.controller;
 
 import com.team.pojo.Course;
+import com.team.pojo.Major;
 import com.team.pojo.Student;
 import com.team.pojo.StudentWithCourse;
 import com.team.service.CourseService;
+import com.team.service.MajorService;
 import com.team.service.StudentService;
 import com.team.service.SwCService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +47,13 @@ public class CourseController {
   public void setSwCService(SwCService swCService) {
     this.swCService = swCService;
   }
+  @Qualifier("majorService")
+  private MajorService majorService;
+  @Autowired
+  public void setMajorService(MajorService majorService) {
+    this.majorService = majorService;
+  }
+
 
 
 
@@ -67,19 +78,32 @@ public class CourseController {
 
 
   @RequestMapping("/autoChoose")
-  public String autoCourse(int id){
-    List<StudentWithCourse> youCurrentCourses = swCService.selectCourseYouChoose(id);
-
-    Student student = studentService.selectStudentById(id);
-    String course = studentService.getMajorName(id);
-
-    if (youCurrentCourses.isEmpty()) {
-      List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");
-      for (Course course1 : courses1) {
-        swCService.elective(id, course1.getId());
-      }
+  public String autoCourse(HttpServletRequest request){
+    int id = (int) request.getSession().getAttribute("userInfo");
+    //现有的所有课程
+    List<StudentWithCourse> list = swCService.selectCourseYouChoose(id);
+    ArrayList<Course> yourHaveCourse = new ArrayList<>();
+    for (StudentWithCourse course : list) {
+      yourHaveCourse.add(course.getCourseId());
     }
-    return "forward:/student/studentIndex";
+
+    //查询你专业的所有必修课
+    Student student = studentService.selectStudentById(id);
+    Major major = majorService.selectMajorById(student.getMajor());
+    String majorName = major.getName() + " 必修";
+    List<Course> AllMust = courseService.SelectCourseByProperties(majorName);
+
+
+
+
+    AllMust.removeAll(yourHaveCourse);
+    for (Course course : AllMust) {
+      swCService.elective(id, course.getId());
+    }
+
+
+
+    return "redirect:/student/studentIndex";
   }
 
 

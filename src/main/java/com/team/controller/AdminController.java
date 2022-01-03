@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -36,30 +37,34 @@ public class AdminController {
   @RequestMapping("/login")
   public String login() {
 
-    return "/admin/login";
+    return "/jsp/admin/login.jsp";
   }
 
   @RequestMapping("/index")
-  public String index(String user, String password) {
+  public String index(String user, String password, HttpSession session, Model model) {
 
     Admin admin = adminService.getAdminByUsername(user);
     if (admin != null && adminService.thePasswordTrue(user, password)) {
-      return "/admin/index";
-    }else return "/admin/Incorrect";
+      session.setAttribute("adminInfo", user);
+      return "/jsp/admin/index.jsp";
+    }else {
+      model.addAttribute("msg", "密码用户名错误亲爱的");
+      return "/jsp/admin/login.jsp";
+    }
   }
 
   @RequestMapping("/getCourse")
   public String getCourse(int course_id, Model model) {
     List<StudentWithCourse> list = adminService.getGradeByCourseId(course_id);
     model.addAttribute("CourseList", list);
-    return "/admin/index";
+    return "/jsp/admin/index.jsp";
   }
 
   @RequestMapping("/toUpdatePage")
   public String updateGrade(int course_id, int student_id, Model model) {
     StudentWithCourse oneSWC = adminService.getOneSWC(course_id, student_id);
     model.addAttribute("oneRecord", oneSWC);
-    return "admin/update";
+    return "/jsp/admin/update.jsp";
   }
 
   @RequestMapping("/update")
