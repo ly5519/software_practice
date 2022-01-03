@@ -8,9 +8,12 @@
 
 
     <settings>
+<!--    排错日志-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
 
-<!--        排错日志-->
-        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+
+
+
 
 <!--        驼峰体转换-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>

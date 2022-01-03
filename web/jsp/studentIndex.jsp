@@ -28,6 +28,7 @@
 
         <div class="row">
             <h1 class="text-right">您好, ${name} 同学</h1>
+            <h5 class="text-right"><a href="${pageContext.request.contextPath}/student/loginOut">注销</a></h5>
         </div>
 
 
@@ -109,22 +110,16 @@
                     <td>${course.selected}</td>
                     <td>${course.examType}</td>
                     <td>
-                        <a class="btn btn-success col-md-5" href="${pageContext.request.contextPath}/course/removeCourse?id=${sid}&cid=${course.id}">朕不要了</a>
+
+                        <a class="btn btn-success col-md-5 course_type"
+                           href="${pageContext.request.contextPath}/course/removeCourse?id=${sid}&cid=${course.id}">
+                                ${course.properties.substring(course.properties.length()-2)}
+                        </a>
                     </td>
                 </tr>
                 <br/>
             </c:forEach>
-
-
-
         </table>
-
-
-
-
-
-
-
 
         <div class="row" style="margin-top: 100px">
 
@@ -133,6 +128,16 @@
         </div>
 
 
+        <script>
+            const btn = document.getElementsByClassName("course_type");
+            for (let i = 0; i < btn.length; i++) {
+                if (btn[i].innerHTML.search("必修") !== -1) {
+                    btn[i].innerHTML = "必须要学";
+                }else {
+                    btn[i].innerHTML = "朕不要了！";
+                }
+            }
+        </script>
 
 
     </div>

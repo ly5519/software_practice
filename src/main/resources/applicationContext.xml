@@ -35,6 +35,7 @@
     <!--    make MVC don't manage static resources-->
     <mvc:default-servlet-handler/>
     <!--    deploy Mapping and Adapter-->
+<!--    这里还配置json格式如何接受和发送-->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -49,11 +50,23 @@
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
         </mvc:message-converters>
     </mvc:annotation-driven>
+<!--    拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/student/**"/>
+            <mvc:mapping path="/course/**"/>
+            <bean class="com.team.config.MyInterceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="com.team.config.AdminInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">
-        <property name="prefix" value="/jsp/"/>
-        <property name="suffix" value=".jsp"/>
     </bean>
 
 
