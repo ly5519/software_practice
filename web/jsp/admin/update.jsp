@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>更新成绩</title>
 </head>
 <body>
     <form action="${pageContext.request.contextPath}/admin/update" method="post">

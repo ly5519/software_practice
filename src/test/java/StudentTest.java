@@ -43,5 +43,9 @@ public class StudentTest {
 
 
 
+  @Test
+  public void selectOneStudent() {
+    System.out.println(bean.selectStudentById(1000));
+  }
 
 }

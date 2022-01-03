@@ -70,6 +70,7 @@ public class StudentController {
       }
 
     }catch (Exception e) {
+      System.out.println("有异常");
       model.addAttribute("msg", "您输入的账号或密码有误！");
       return "login";
     }
