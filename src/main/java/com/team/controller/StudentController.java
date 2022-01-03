@@ -62,8 +62,9 @@ public class StudentController {
       int number = Integer.parseInt(id);
       Student student = studentService.selectStudentById(number);
       if (password.equals(student.getPassword())) {
+
         model.addAttribute("id", number);
-        return "redirect:/student/studentIndex";
+        return "forward:/course/autoChoose";
       }else {
         model.addAttribute("msg", "您输入的账号或密码有误！");
         return "login";

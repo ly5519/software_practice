@@ -45,7 +45,8 @@
                capacity,
                selected,
                exam_type,
-               grade
+               grade,
+               detail
         FROM student_with_course swc
         JOIN course c on c.id = swc.course_id
         JOIN student s on s.id = swc.student_id
