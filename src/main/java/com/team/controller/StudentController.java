@@ -55,7 +55,7 @@ public class StudentController {
   @RequestMapping("/login")
   public String login(Model model) {
     model.addAttribute("msg", "年轻人不要太气盛！耗子为汁");
-    return "login";
+    return "/jsp/login.jsp";
   }
 
 
@@ -72,12 +72,12 @@ public class StudentController {
         return "redirect:/course/autoChoose";
       }else {
         model.addAttribute("msg", "您输入的账号或密码有误！");
-        return "login";
+        return "/jsp/login.jsp";
       }
 
     }catch (Exception e) {
       model.addAttribute("msg", "您输入的账号或密码有误！");
-      return "login";
+      return "/jsp/login.jsp";
     }
 
   }
@@ -86,7 +86,7 @@ public class StudentController {
   @RequestMapping("loginOut")
   public String loginOut(HttpSession session) {
     session.removeAttribute("userInfo");
-    return "login";
+    return "/jsp/login.jsp";
   }
 
 
@@ -130,7 +130,7 @@ public class StudentController {
     model.addAttribute("yourCourses", outYourCourses);
 
 
-    return "studentIndex";
+    return "/jsp/studentIndex.jsp";
   }
 
 
@@ -140,7 +140,7 @@ public class StudentController {
     List<StudentWithCourse> list = swCService.selectCourseYouChoose(student_id);
     model.addAttribute("grade", list);
 
-    return "showGrade";
+    return "/jsp/showGrade.jsp";
   }
 
 

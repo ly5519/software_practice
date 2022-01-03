@@ -37,7 +37,7 @@ public class AdminController {
   @RequestMapping("/login")
   public String login() {
 
-    return "/admin/login";
+    return "/jsp/admin/login.jsp";
   }
 
   @RequestMapping("/index")
@@ -46,10 +46,10 @@ public class AdminController {
     Admin admin = adminService.getAdminByUsername(user);
     if (admin != null && adminService.thePasswordTrue(user, password)) {
       session.setAttribute("adminInfo", user);
-      return "/admin/index";
+      return "/jsp/admin/index.jsp";
     }else {
       model.addAttribute("msg", "密码用户名错误亲爱的");
-      return "admin/login";
+      return "/jsp/admin/login.jsp";
     }
   }
 
@@ -57,14 +57,14 @@ public class AdminController {
   public String getCourse(int course_id, Model model) {
     List<StudentWithCourse> list = adminService.getGradeByCourseId(course_id);
     model.addAttribute("CourseList", list);
-    return "/admin/index";
+    return "/jsp/admin/index.jsp";
   }
 
   @RequestMapping("/toUpdatePage")
   public String updateGrade(int course_id, int student_id, Model model) {
     StudentWithCourse oneSWC = adminService.getOneSWC(course_id, student_id);
     model.addAttribute("oneRecord", oneSWC);
-    return "admin/update";
+    return "/jsp/admin/update.jsp";
   }
 
   @RequestMapping("/update")
