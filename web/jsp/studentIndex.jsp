@@ -133,6 +133,7 @@
             for (let i = 0; i < btn.length; i++) {
                 if (btn[i].innerHTML.search("必修") !== -1) {
                     btn[i].innerHTML = "必须要学";
+                    btn[i].setAttribute("disabled", "disabled");
                 }else {
                     btn[i].innerHTML = "朕不要了！";
                 }

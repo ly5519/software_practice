@@ -72,13 +72,13 @@ public class StudentController {
         return "redirect:/course/autoChoose";
       }else {
         model.addAttribute("msg", "您输入的账号或密码有误！");
-        return "/jsp/login.jsp";
+        return "/iframe/home.html";
       }
 
     }catch (Exception e) {
       System.out.println("有异常");
       model.addAttribute("msg", "您输入的账号或密码有误！");
-      return "/jsp/login.jsp";
+      return "/iframe/home.html";
     }
 
   }
