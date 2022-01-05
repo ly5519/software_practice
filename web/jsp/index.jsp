@@ -44,8 +44,8 @@
         </tr>
         <c:forEach var="course" items="${CourseList}">
             <tr>
-                <td>${course.studentId.id}</td>
-                <td>${course.studentId.name}</td>
+                <td>${course.courseId.id}</td>
+                <td>${course.courseId.name}</td>
                 <td>${course.courseId.credit}</td>
                 <td>${course.courseId.period}</td>
                 <td>${course.courseId.examType}</td>
