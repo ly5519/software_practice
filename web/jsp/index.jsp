@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>成绩查询</title>
+    <title>更新成绩界面</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
@@ -14,24 +14,25 @@
     <script type="text/javascript" src="../static/js/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="../static/js/layui.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+
 </head>
 <body>
-
 <div class="layui-col-md3">
     <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="">
-        <li class="layui-nav-item "><a href="${pageContext.request.contextPath}/student/studentIndex">学生选课</a></li>
-        <li class="layui-nav-item layui-this"><a href="${pageContext.request.contextPath}/student/showGrade?student_id=${sid}">成绩查询</a></li>
+        <li class="layui-nav-item layui-this"><a href="">录入成绩</a></li>
     </ul>
 </div>
+<div style="margin-left: 250px;">
+    <form action="${pageContext.request.contextPath}/admin/getCourse" method="get">
+        <label for="cId">更新的课程号：</label>
+        <input type="text" name="course_id" id="cId" required lay-verify="required|number" autocomplete="off"  >
+        <input type="submit">
+    </form>
+</div>
 
-<div id="print" class="layui-col-md9" style="margin-left: 300px;">
+<div class="layui-col-md9"style="margin-left: 250px;">
+    <h2>课程名：${CourseList[0].courseId.name}</h2>
     <table class="table table-hover">
-
-
-        <tr>
-            <h1 colspan="8">${name} 同学的成绩</h1>
-        </tr>
-
         <tr>
             <th>课程号</th>
             <th>课程名称</th>
@@ -39,45 +40,35 @@
             <th>学时</th>
             <th>考察类型</th>
             <th>成绩</th>
+            <th>操作</th>
         </tr>
-
-        <c:forEach var="oneCourse" items="${grade}">
+        <c:forEach var="course" items="${CourseList}">
             <tr>
-                <td>${oneCourse.courseId.id}</td>
-                <td>${oneCourse.courseId.name}</td>
-                <td>${oneCourse.courseId.credit}</td>
-                <td>${oneCourse.courseId.period}</td>
-                <td>${oneCourse.courseId.examType}</td>
-                <td>${oneCourse.grade}</td>
+                <td>${course.studentId.id}</td>
+                <td>${course.studentId.name}</td>
+                <td>${course.courseId.credit}</td>
+                <td>${course.courseId.period}</td>
+                <td>${course.courseId.examType}</td>
+                <td>${course.grade}</td>
+                <td><a href="${pageContext.request.contextPath}/admin/toUpdatePage?course_id=${course.courseId.id}&student_id=${course.studentId.id}">
+                   <button id="Button2" type="button" class="layui-btn layui-btn-sm">
+                       <i class="layui-icon layui-icon-edit layui-font-12">编辑成绩</i>
+                   </button></a>
+                </td>
             </tr>
-            <br/>
         </c:forEach>
     </table>
 </div>
-<div>
-<%--    <button id="print_btn">打印</button>--%>
-    <button id="print_btn" type="button" class="layui-btn">
-        <i class="layui-icon layui-icon-print layui-font-12"></i>
-    </button>
-</div>
 
-    <script>
-        // 触发打印
-        const btn = document.getElementById("print_btn");
-        btn.onclick = function () {
-            const bodyHtml = window.document.body.innerHTML;
-            window.document.body.innerHTML = document.getElementById("print").innerHTML;
-            window.print();
-            location.reload();
-            window.document.body.innerHTML = bodyHtml;
-        };
 
-        //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use('element', function(){
-            var element = layui.element;
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
 
-            //…
-        });
-    </script>
+        //…
+    });
+
+</script>
 </body>
 </html>

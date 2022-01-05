@@ -1,7 +1,6 @@
 package com.team.controller;
 
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team.pojo.Admin;
 import com.team.pojo.SWC;
 import com.team.pojo.StudentWithCourse;
@@ -37,7 +36,7 @@ public class AdminController {
   @RequestMapping("/login")
   public String login() {
 
-    return "/jsp/admin/login.jsp";
+    return "/HTML/admin_login_home.html";
   }
 
   @RequestMapping("/index")
@@ -46,10 +45,10 @@ public class AdminController {
     Admin admin = adminService.getAdminByUsername(user);
     if (admin != null && adminService.thePasswordTrue(user, password)) {
       session.setAttribute("adminInfo", user);
-      return "/jsp/admin/index.jsp";
+      return "/jsp/index.jsp";
     }else {
       model.addAttribute("msg", "密码用户名错误亲爱的");
-      return "/jsp/admin/login.jsp";
+      return "/HTML/admin_login_home.html";
     }
   }
 
@@ -57,14 +56,14 @@ public class AdminController {
   public String getCourse(int course_id, Model model) {
     List<StudentWithCourse> list = adminService.getGradeByCourseId(course_id);
     model.addAttribute("CourseList", list);
-    return "/jsp/admin/index.jsp";
+    return "/jsp/index.jsp";
   }
 
   @RequestMapping("/toUpdatePage")
   public String updateGrade(int course_id, int student_id, Model model) {
     StudentWithCourse oneSWC = adminService.getOneSWC(course_id, student_id);
     model.addAttribute("oneRecord", oneSWC);
-    return "/jsp/admin/update.jsp";
+    return "/jsp/update.jsp";
   }
 
   @RequestMapping("/update")

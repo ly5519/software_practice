@@ -55,7 +55,7 @@ public class StudentController {
   @RequestMapping("/login")
   public String login(Model model) {
     model.addAttribute("msg", "年轻人不要太气盛！耗子为汁");
-    return "/jsp/login.jsp";
+    return "/iframe/home.html";
   }
 
 
@@ -87,7 +87,7 @@ public class StudentController {
   @RequestMapping("loginOut")
   public String loginOut(HttpSession session) {
     session.removeAttribute("userInfo");
-    return "/jsp/login.jsp";
+    return "/iframe/home.html";
   }
 
 
@@ -137,10 +137,12 @@ public class StudentController {
 
 
   @RequestMapping("/showGrade")
-  public String show(int student_id, Model model) {
+  public String show(int student_id, Model model,HttpServletRequest request) {
+    int id = (int) request.getSession().getAttribute("userInfo");
     List<StudentWithCourse> list = swCService.selectCourseYouChoose(student_id);
+    Student student = studentService.selectStudentById(id);
     model.addAttribute("grade", list);
-
+    model.addAttribute("name", student.getName());
     return "/jsp/showGrade.jsp";
   }
 
