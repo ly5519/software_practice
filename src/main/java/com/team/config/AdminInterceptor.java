@@ -12,18 +12,18 @@ import javax.servlet.http.HttpSession;
  * @author Liu_Yan
  */
 public class AdminInterceptor implements HandlerInterceptor {
-  @Override
-  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    HttpSession session = request.getSession();
-    if (session.getAttribute("adminInfo") != null) {
-      return true;
-    }
-    if (request.getRequestURI().contains("index") || request.getRequestURI().contains("login")) {
-      return true;
-    }
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("adminInfo") != null) {
+            return true;
+        }
+        if (request.getRequestURI().contains("index") || request.getRequestURI().contains("login")) {
+            return true;
+        }
 
-    System.out.println("有人尝试在管理员页面为非作歹！");
-    response.sendRedirect("/admin/login");
-    return false;
-  }
+        System.out.println("有人尝试在管理员页面为非作歹！");
+        response.sendRedirect("/admin/login");
+        return false;
+    }
 }

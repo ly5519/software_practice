@@ -1,7 +1,6 @@
 package com.team.service;
 
 import com.team.pojo.Student;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,11 +10,16 @@ import java.util.List;
  * @author Liu_Yan
  */
 public interface StudentService {
-  String getMajorName(int id);
-  Student selectStudentById(int id);
-  List<Student> selectAll();
-  void addStudent(Student student);
-  void updateStudent(Student student);
-  void deleteStudentById(int id);
+    String getMajorName(int id);
+
+    Student selectStudentById(int id);
+
+    List<Student> selectAll();
+
+    void addStudent(Student student);
+
+    void updateStudent(Student student);
+
+    void deleteStudentById(int id);
 
 }

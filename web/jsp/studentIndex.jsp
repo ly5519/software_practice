@@ -4,13 +4,17 @@
 <head>
     <title>学生选课</title>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/layui.css">
     <script type="text/javascript" src="../static/js/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="../static/js/layui.js"></script>
@@ -20,7 +24,8 @@
 <div class="layui-col-md3">
     <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="">
         <li class="layui-nav-item layui-this"><a href="">学生选课</a></li>
-        <li class="layui-nav-item "><a href="${pageContext.request.contextPath}/student/showGrade?student_id=${sid}">成绩查询</a></li>
+        <li class="layui-nav-item "><a href="${pageContext.request.contextPath}/student/showGrade?student_id=${sid}">成绩查询</a>
+        </li>
     </ul>
 </div>
 
@@ -52,7 +57,8 @@
                 <td>${course.selected}</td>
                 <td>${course.examType}</td>
                 <td>
-                    <a class=" " href="${pageContext.request.contextPath}/course/chooseCourse?id=${sid}&cid=${course.id}">
+                    <a class=" "
+                       href="${pageContext.request.contextPath}/course/chooseCourse?id=${sid}&cid=${course.id}">
                         <button type="button" class="layui-btn">
                             <i class="layui-icon layui-icon-add-circle layui-font-12">选择课程</i>
                         </button>
@@ -74,7 +80,8 @@
                 <td>${course.selected}</td>
                 <td>${course.examType}</td>
                 <td>
-                    <a class="" href="${pageContext.request.contextPath}/course/chooseCourse?id=${sid}&cid=${course.id}">
+                    <a class=""
+                       href="${pageContext.request.contextPath}/course/chooseCourse?id=${sid}&cid=${course.id}">
                         <button type="button" class="layui-btn">
                             <i class="layui-icon layui-icon-add-circle layui-font-12">选择课程</i>
                         </button>
@@ -96,8 +103,9 @@
                 <td>${course.selected}</td>
                 <td>${course.examType}</td>
                 <td>
-                    <a class=" layui-btn  course_type layui-icon layui-icon-reduce-circle " href="${pageContext.request.contextPath}/course/removeCourse?id=${sid}&cid=${course.id}">
-                        ${course.properties.substring(course.properties.length()-2)}
+                    <a class=" layui-btn  course_type layui-icon layui-icon-reduce-circle "
+                       href="${pageContext.request.contextPath}/course/removeCourse?id=${sid}&cid=${course.id}">
+                            ${course.properties.substring(course.properties.length()-2)}
                     </a>
                 </td>
             </tr>
@@ -113,7 +121,7 @@
         if (btn[i].innerHTML.search("必修") !== -1) {
             btn[i].innerHTML = "必选课";
             btn[i].setAttribute("disabled", "disabled");
-        }else {
+        } else {
             btn[i].innerHTML = "取消选课";
             // btn[i].setAttribute("class", "layui-btn layui-btn-warm")
         }
@@ -121,7 +129,7 @@
 
 
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
 
         //…

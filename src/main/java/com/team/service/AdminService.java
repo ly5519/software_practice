@@ -12,9 +12,13 @@ import java.util.List;
  * @author Liu_Yan
  */
 public interface AdminService {
-  Admin getAdminByUsername(String username);
-  boolean thePasswordTrue(String user, String password);
-  List<StudentWithCourse> getGradeByCourseId(int course_id);
-  StudentWithCourse getOneSWC(int course_id, int student_id);
-  void updateGrade(SWC swc);
+    Admin getAdminByUsername(String username);
+
+    boolean thePasswordTrue(String user, String password);
+
+    List<StudentWithCourse> getGradeByCourseId(int course_id);
+
+    StudentWithCourse getOneSWC(int course_id, int student_id);
+
+    void updateGrade(SWC swc);
 }

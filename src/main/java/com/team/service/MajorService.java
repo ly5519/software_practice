@@ -10,9 +10,13 @@ import java.util.List;
  * @author Liu_Yan
  */
 public interface MajorService {
-  List<Major> selectAll();
-  Major selectMajorById(int id);
-  void insertMajor(Major major);
-  void updateMajor(Major major);
-  void deleteMajorById(int id);
+    List<Major> selectAll();
+
+    Major selectMajorById(int id);
+
+    void insertMajor(Major major);
+
+    void updateMajor(Major major);
+
+    void deleteMajorById(int id);
 }

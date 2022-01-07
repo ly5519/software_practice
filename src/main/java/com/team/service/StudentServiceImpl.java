@@ -10,42 +10,40 @@ import java.util.List;
  *
  * @author Liu_Yan
  */
-public class StudentServiceImpl implements StudentService{
-  private StudentMapper studentMapper;
-  public void setStudentMapper(StudentMapper studentMapper) {
-    this.studentMapper = studentMapper;
-  }
+public class StudentServiceImpl implements StudentService {
+    private StudentMapper studentMapper;
 
+    public void setStudentMapper(StudentMapper studentMapper) {
+        this.studentMapper = studentMapper;
+    }
 
-  @Override
-  public String getMajorName(int id) {
-    return studentMapper.getMajorName(id);
-  }
+    @Override
+    public String getMajorName(int id) {
+        return studentMapper.getMajorName(id);
+    }
 
-  @Override
-  public Student selectStudentById(int id) {
-    return studentMapper.selectStudentById(id);
-  }
+    @Override
+    public Student selectStudentById(int id) {
+        return studentMapper.selectStudentById(id);
+    }
 
-  @Override
-  public List<Student> selectAll() {
-    return studentMapper.selectAll();
-  }
+    @Override
+    public List<Student> selectAll() {
+        return studentMapper.selectAll();
+    }
 
-  @Override
-  public void addStudent(Student student) {
-    studentMapper.addStudent(student);
-  }
+    @Override
+    public void addStudent(Student student) {
+        studentMapper.addStudent(student);
+    }
 
-  @Override
-  public void updateStudent(Student student) {
-    studentMapper.updateStudent(student);
-  }
+    @Override
+    public void updateStudent(Student student) {
+        studentMapper.updateStudent(student);
+    }
 
-  @Override
-  public void deleteStudentById(int id) {
-    studentMapper.deleteStudentById(id);
-  }
-
-
+    @Override
+    public void deleteStudentById(int id) {
+        studentMapper.deleteStudentById(id);
+    }
 }

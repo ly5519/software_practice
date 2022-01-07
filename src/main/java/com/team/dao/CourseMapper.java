@@ -11,15 +11,13 @@ import java.util.List;
  * @author Liu_Yan
  */
 public interface CourseMapper {
+    List<Course> SelectCourseByProperties(@Param("properties") String name);
 
+    Course selectCourseById(@Param("id") int id);
 
-  List<Course> SelectCourseByProperties(@Param("properties") String name);
-  Course selectCourseById(@Param("id")int id);
+    void updateCourse(Course course);
 
+    void insertCourse(Course course);
 
-  void updateCourse(Course course);
-
-  void insertCourse(Course course);
-
-  void deleteCourseById(@Param("id") int id);
+    void deleteCourseById(@Param("id") int id);
 }

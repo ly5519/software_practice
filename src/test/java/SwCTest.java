@@ -1,4 +1,3 @@
-
 import com.team.service.SwCService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -10,14 +9,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author Liu_Yan
  */
 public class SwCTest {
-  ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-  SwCService bean = context.getBean("swcService", SwCService.class);
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    SwCService bean = context.getBean("swcService", SwCService.class);
 
-
-
-  @Test
-  public void updatedCourse() {
-    bean.updatedCourse(1000, 1, 95);
-  }
-
+    @Test
+    public void updatedCourse() {
+        bean.updatedCourse(1000, 1, 95);
+    }
 }

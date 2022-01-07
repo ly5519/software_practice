@@ -26,125 +26,106 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-  //服务区域
-  @Qualifier("studentService")
-  private StudentService studentService;
-  @Autowired
-  public void setStudentService(StudentService studentService) {
-    this.studentService = studentService;
-  }
+    //服务区域
+    @Qualifier("studentService")
+    private StudentService studentService;
 
-  @Qualifier("courseService")
-  private CourseService courseService;
-  @Autowired
-  public void setCourseService(CourseService courseService) {
-    this.courseService = courseService;
-  }
+    @Autowired
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
-  @Qualifier("swcService")
-  private SwCService swCService;
-  @Autowired
-  public void setSwCService(SwCService swCService) {
-    this.swCService = swCService;
-  }
+    @Qualifier("courseService")
+    private CourseService courseService;
 
+    @Autowired
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
+    @Qualifier("swcService")
+    private SwCService swCService;
 
+    @Autowired
+    public void setSwCService(SwCService swCService) {
+        this.swCService = swCService;
+    }
 
-
-  @RequestMapping("/login")
-  public String login(Model model) {
-    model.addAttribute("msg", "年轻人不要太气盛！耗子为汁");
-    return "/iframe/home.html";
-  }
-
-
-  @RequestMapping("/verify")
-  public String verify(String id, String password, Model model, HttpSession session) {
-    try {
-      int number = Integer.parseInt(id);
-      Student student = studentService.selectStudentById(number);
-      if (password.equals(student.getPassword())) {
-
-        // model.addAttribute("id", number);
-
-        session.setAttribute("userInfo", number);
-        return "redirect:/course/autoChoose";
-      }else {
-        model.addAttribute("msg", "您输入的账号或密码有误！");
+    @RequestMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("msg", "年轻人不要太气盛！耗子为汁");
         return "/iframe/home.html";
-      }
-
-    }catch (Exception e) {
-      System.out.println("有异常");
-      model.addAttribute("msg", "您输入的账号或密码有误！");
-      return "/iframe/home.html";
     }
 
-  }
+    @RequestMapping("/verify")
+    public String verify(String id, String password, Model model, HttpSession session) {
+        try {
+            int number = Integer.parseInt(id);
+            Student student = studentService.selectStudentById(number);
+            if (password.equals(student.getPassword())) {
+                session.setAttribute("userInfo", number);
+                return "redirect:/course/autoChoose";
+            } else {
+                model.addAttribute("msg", "您输入的账号或密码有误！");
+                return "/iframe/home.html";
+            }
 
-
-  @RequestMapping("loginOut")
-  public String loginOut(HttpSession session) {
-    session.removeAttribute("userInfo");
-    return "/iframe/home.html";
-  }
-
-
-  @RequestMapping("/studentIndex")
-  public String successPage(Model model, HttpServletRequest request) {
-    int id = (int) request.getSession().getAttribute("userInfo");
-    Student student = studentService.selectStudentById(id);
-    model.addAttribute("name", student.getName());
-    model.addAttribute("sid", student.getId());
-
-    String course = studentService.getMajorName(id);
-    List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");
-    List<Course> courses2 = new ArrayList<>();
-    List<Course> courses3 = new ArrayList<>();
-
-
-    for (Course testData : courseService.SelectCourseByProperties(course + " 选修")) {
-      if (swCService.selectCourseYouChooseType(id, testData.getId()) == null){
-        courses2.add(testData);
-      }
-    }
-    for (Course testData : courseService.SelectCourseByProperties("任选")) {
-      if (swCService.selectCourseYouChooseType(id, testData.getId()) == null){
-        courses3.add(testData);
-      }
+        } catch (Exception e) {
+            System.out.println("有异常");
+            model.addAttribute("msg", "您输入的账号或密码有误！");
+            return "/iframe/home.html";
+        }
     }
 
-
-
-    model.addAttribute("courses1", courses1);
-    model.addAttribute("courses2", courses2);
-    model.addAttribute("courses3", courses3);
-
-
-    List<Course> outYourCourses = new ArrayList<>();
-    List<StudentWithCourse> yourCourses = swCService.selectCourseYouChoose(student.getId());
-    for (StudentWithCourse co : yourCourses) {
-      outYourCourses.add(courseService.selectCourseById(co.getCourseId().getId()));
+    @RequestMapping("loginOut")
+    public String loginOut(HttpSession session) {
+        session.removeAttribute("userInfo");
+        return "/iframe/home.html";
     }
 
-    model.addAttribute("yourCourses", outYourCourses);
+    @RequestMapping("/studentIndex")
+    public String successPage(Model model, HttpServletRequest request) {
+        int id = (int) request.getSession().getAttribute("userInfo");
+        Student student = studentService.selectStudentById(id);
+        model.addAttribute("name", student.getName());
+        model.addAttribute("sid", student.getId());
 
+        String course = studentService.getMajorName(id);
+        List<Course> courses1 = courseService.SelectCourseByProperties(course + " 必修");
+        List<Course> courses2 = new ArrayList<>();
+        List<Course> courses3 = new ArrayList<>();
 
-    return "/jsp/studentIndex.jsp";
-  }
+        for (Course testData : courseService.SelectCourseByProperties(course + " 选修")) {
+            if (swCService.selectCourseYouChooseType(id, testData.getId()) == null) {
+                courses2.add(testData);
+            }
+        }
+        for (Course testData : courseService.SelectCourseByProperties("任选")) {
+            if (swCService.selectCourseYouChooseType(id, testData.getId()) == null) {
+                courses3.add(testData);
+            }
+        }
 
+        model.addAttribute("courses1", courses1);
+        model.addAttribute("courses2", courses2);
+        model.addAttribute("courses3", courses3);
 
+        List<Course> outYourCourses = new ArrayList<>();
+        List<StudentWithCourse> yourCourses = swCService.selectCourseYouChoose(student.getId());
+        for (StudentWithCourse co : yourCourses) {
+            outYourCourses.add(courseService.selectCourseById(co.getCourseId().getId()));
+        }
+        model.addAttribute("yourCourses", outYourCourses);
+        return "/jsp/studentIndex.jsp";
+    }
 
-  @RequestMapping("/showGrade")
-  public String show(int student_id, Model model,HttpServletRequest request) {
-    int id = (int) request.getSession().getAttribute("userInfo");
-    List<StudentWithCourse> list = swCService.selectCourseYouChoose(student_id);
-    Student student = studentService.selectStudentById(id);
-    model.addAttribute("grade", list);
-    model.addAttribute("name", student.getName());
-    return "/jsp/showGrade.jsp";
-  }
-
-
+    @RequestMapping("/showGrade")
+    public String show(int student_id, Model model, HttpServletRequest request) {
+        int id = (int) request.getSession().getAttribute("userInfo");
+        List<StudentWithCourse> list = swCService.selectCourseYouChoose(student_id);
+        Student student = studentService.selectStudentById(id);
+        model.addAttribute("grade", list);
+        model.addAttribute("name", student.getName());
+        return "/jsp/showGrade.jsp";
+    }
 }

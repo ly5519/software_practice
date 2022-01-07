@@ -3,13 +3,17 @@
 <html>
 <head>
     <title>更新成绩界面</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/layui.css">
     <script type="text/javascript" src="../static/js/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="../static/js/layui.js"></script>
@@ -25,12 +29,12 @@
 <div style="margin-left: 250px;">
     <form action="${pageContext.request.contextPath}/admin/getCourse" method="get">
         <label for="cId">更新的课程号：</label>
-        <input type="text" name="course_id" id="cId" required lay-verify="required|number" autocomplete="off"  >
+        <input type="text" name="course_id" id="cId" required lay-verify="required|number" autocomplete="off">
         <input type="submit">
     </form>
 </div>
 
-<div class="layui-col-md9"style="margin-left: 250px;">
+<div class="layui-col-md9" style="margin-left: 250px;">
     <h2>课程名：${CourseList[0].courseId.name}</h2>
     <table class="table table-hover">
         <tr>
@@ -50,10 +54,12 @@
                 <td>${course.courseId.period}</td>
                 <td>${course.courseId.examType}</td>
                 <td>${course.grade}</td>
-                <td><a href="${pageContext.request.contextPath}/admin/toUpdatePage?course_id=${course.courseId.id}&student_id=${course.studentId.id}">
-                   <button id="Button2" type="button" class="layui-btn layui-btn-sm">
-                       <i class="layui-icon layui-icon-edit layui-font-12">编辑成绩</i>
-                   </button></a>
+                <td>
+                    <a href="${pageContext.request.contextPath}/admin/toUpdatePage?course_id=${course.courseId.id}&student_id=${course.studentId.id}">
+                        <button id="Button2" type="button" class="layui-btn layui-btn-sm">
+                            <i class="layui-icon layui-icon-edit layui-font-12">编辑成绩</i>
+                        </button>
+                    </a>
                 </td>
             </tr>
         </c:forEach>
@@ -63,7 +69,7 @@
 
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
 
         //…

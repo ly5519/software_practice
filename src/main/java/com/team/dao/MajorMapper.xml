@@ -4,15 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.dao.MajorMapper">
     <select id="selectAll" resultType="major">
-        SELECT * FROM major
+        SELECT *
+        FROM major
     </select>
     <select id="selectMajorById" resultType="major">
-        SELECT * FROM major WHERE id = #{id}
+        SELECT *
+        FROM major
+        WHERE id = #{id}
     </select>
 
     <insert id="insertMajor" parameterType="major">
         INSERT INTO major
-        VALUE (#{id}, #{name})
+            VALUE (#{id}, #{name})
     </insert>
 
     <update id="updateMajor" parameterType="major">
@@ -22,6 +25,8 @@
     </update>
 
     <delete id="deleteMajorById" parameterType="int">
-        DELETE FROM major WHERE id = #{id}
+        DELETE
+        FROM major
+        WHERE id = #{id}
     </delete>
 </mapper>

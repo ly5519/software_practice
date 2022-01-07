@@ -6,32 +6,40 @@
 
 <mapper namespace="com.team.dao.CourseMapper">
     <select id="SelectCourseByProperties" resultType="course">
-        SELECT * FROM course WHERE properties = #{properties}
+        SELECT *
+        FROM course
+        WHERE properties = #{properties}
     </select>
 
     <select id="selectCourseById" resultType="course">
-        SELECT * FROM course WHERE id = #{id}
+        SELECT *
+        FROM course
+        WHERE id = #{id}
     </select>
 
     <update id="updateCourse" parameterType="course">
-        UPDATE course SET name = #{name},
-                          period = #{period},
-                          credit = #{credit},
-                          detail = #{detail},
-                          properties = #{properties},
-                          capacity = #{capacity},
-                          selected = #{selected},
-                          exam_type = #{examType}
+        UPDATE course
+        SET name       = #{name},
+            period     = #{period},
+            credit     = #{credit},
+            detail     = #{detail},
+            properties = #{properties},
+            capacity   = #{capacity},
+            selected   = #{selected},
+            exam_type  = #{examType}
         WHERE id = #{id}
     </update>
 
     <insert id="insertCourse" parameterType="course">
         INSERT
         INTO course
-        VALUE (#{id}, #{name}, #{period}, #{credit}, #{detail}, #{properties}, #{capacity}, #{selected}, #{examType})
+            VALUE (#{id}, #{name}, #{period}, #{credit}, #{detail}, #{properties}, #{capacity}, #{selected},
+                   #{examType})
     </insert>
 
     <delete id="deleteCourseById" parameterType="int">
-        DELETE FROM course WHERE id = #{id}
+        DELETE
+        FROM course
+        WHERE id = #{id}
     </delete>
 </mapper>

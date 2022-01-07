@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SWC {
-  private Integer student_id;
-  private Integer course_id;
-  private float grade;
+    private Integer student_id;
+    private Integer course_id;
+    private float grade;
 }

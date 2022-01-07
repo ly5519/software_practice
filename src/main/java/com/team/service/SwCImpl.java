@@ -10,39 +10,40 @@ import java.util.List;
  *
  * @author Liu_Yan
  */
-public class SwCImpl implements SwCService{
-  private SwCMapper swCMapper;
-  public void setSwCMapper(SwCMapper swCMapper) {
-    this.swCMapper = swCMapper;
-  }
+public class SwCImpl implements SwCService {
+    private SwCMapper swCMapper;
 
-  @Override
-  public List<StudentWithCourse> selectCourseYouChoose(int id) {
-    return swCMapper.selectCourseYouChoose(id);
-  }
+    public void setSwCMapper(SwCMapper swCMapper) {
+        this.swCMapper = swCMapper;
+    }
 
-  @Override
-  public StudentWithCourse selectCourseYouChooseType(int id, int number) {
-    return swCMapper.selectCourseYouChooseType(id, number);
-  }
+    @Override
+    public List<StudentWithCourse> selectCourseYouChoose(int id) {
+        return swCMapper.selectCourseYouChoose(id);
+    }
 
-  @Override
-  public List<StudentWithCourse> selectSWCByCId(int id) {
-    return swCMapper.selectSWCByCId(id);
-  }
+    @Override
+    public StudentWithCourse selectCourseYouChooseType(int id, int number) {
+        return swCMapper.selectCourseYouChooseType(id, number);
+    }
 
-  @Override
-  public void elective(int student_id, int course_id) {
-    swCMapper.elective(student_id, course_id);
-  }
+    @Override
+    public List<StudentWithCourse> selectSWCByCId(int id) {
+        return swCMapper.selectSWCByCId(id);
+    }
 
-  @Override
-  public void removedCourse(int student_id, int course_id) {
-    swCMapper.removedCourse(student_id, course_id);
-  }
+    @Override
+    public void elective(int student_id, int course_id) {
+        swCMapper.elective(student_id, course_id);
+    }
 
-  @Override
-  public void updatedCourse(int student_id, int course_id, int grade) {
-    swCMapper.updatedCourse(student_id, course_id, grade);
-  }
+    @Override
+    public void removedCourse(int student_id, int course_id) {
+        swCMapper.removedCourse(student_id, course_id);
+    }
+
+    @Override
+    public void updatedCourse(int student_id, int course_id, int grade) {
+        swCMapper.updatedCourse(student_id, course_id, grade);
+    }
 }

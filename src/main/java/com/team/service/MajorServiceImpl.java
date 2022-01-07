@@ -10,34 +10,35 @@ import java.util.List;
  *
  * @author Liu_Yan
  */
-public class MajorServiceImpl implements MajorService{
-  private MajorMapper majorMapper;
-  public void setMajorMapper(MajorMapper majorMapper) {
-    this.majorMapper = majorMapper;
-  }
+public class MajorServiceImpl implements MajorService {
+    private MajorMapper majorMapper;
 
-  @Override
-  public List<Major> selectAll() {
-    return majorMapper.selectAll();
-  }
+    public void setMajorMapper(MajorMapper majorMapper) {
+        this.majorMapper = majorMapper;
+    }
 
-  @Override
-  public Major selectMajorById(int id) {
-    return majorMapper.selectMajorById(id);
-  }
+    @Override
+    public List<Major> selectAll() {
+        return majorMapper.selectAll();
+    }
 
-  @Override
-  public void insertMajor(Major major) {
-    majorMapper.insertMajor(major);
-  }
+    @Override
+    public Major selectMajorById(int id) {
+        return majorMapper.selectMajorById(id);
+    }
 
-  @Override
-  public void updateMajor(Major major) {
-    majorMapper.updateMajor(major);
-  }
+    @Override
+    public void insertMajor(Major major) {
+        majorMapper.insertMajor(major);
+    }
 
-  @Override
-  public void deleteMajorById(int id) {
-    majorMapper.deleteMajorById(id);
-  }
+    @Override
+    public void updateMajor(Major major) {
+        majorMapper.updateMajor(major);
+    }
+
+    @Override
+    public void deleteMajorById(int id) {
+        majorMapper.deleteMajorById(id);
+    }
 }

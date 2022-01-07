@@ -13,41 +13,41 @@ import java.util.List;
  *
  * @author Liu_Yan
  */
-public class AdminServiceImpl implements AdminService{
-  private AdminMapper adminMapper;
-  private SwCMapper swCMapper;
+public class AdminServiceImpl implements AdminService {
+    private AdminMapper adminMapper;
+    private SwCMapper swCMapper;
 
-  public void setSwCMapper(SwCMapper swCMapper) {
-    this.swCMapper = swCMapper;
-  }
+    public void setSwCMapper(SwCMapper swCMapper) {
+        this.swCMapper = swCMapper;
+    }
 
-  public void setAdminMapper(AdminMapper adminMapper) {
-    this.adminMapper = adminMapper;
-  }
+    public void setAdminMapper(AdminMapper adminMapper) {
+        this.adminMapper = adminMapper;
+    }
 
-  @Override
-  public Admin getAdminByUsername(String username) {
-    return adminMapper.selectAdminByUsername(username);
-  }
+    @Override
+    public Admin getAdminByUsername(String username) {
+        return adminMapper.selectAdminByUsername(username);
+    }
 
-  @Override
-  public boolean thePasswordTrue(String user, String password) {
-    Admin admin = adminMapper.selectAdminByUsername(user);
-    return password.equals(admin.getPassword());
-  }
+    @Override
+    public boolean thePasswordTrue(String user, String password) {
+        Admin admin = adminMapper.selectAdminByUsername(user);
+        return password.equals(admin.getPassword());
+    }
 
-  @Override
-  public List<StudentWithCourse> getGradeByCourseId(int course_id) {
-    return swCMapper.selectSWCByCId(course_id);
-  }
+    @Override
+    public List<StudentWithCourse> getGradeByCourseId(int course_id) {
+        return swCMapper.selectSWCByCId(course_id);
+    }
 
-  @Override
-  public StudentWithCourse getOneSWC(int course_id, int student_id) {
-    return swCMapper.selectCourseYouChooseType(student_id, course_id);
-  }
+    @Override
+    public StudentWithCourse getOneSWC(int course_id, int student_id) {
+        return swCMapper.selectCourseYouChooseType(student_id, course_id);
+    }
 
-  @Override
-  public void updateGrade(SWC swc) {
-    adminMapper.updateSWC(swc);
-  }
+    @Override
+    public void updateGrade(SWC swc) {
+        adminMapper.updateSWC(swc);
+    }
 }

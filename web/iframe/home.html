@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/layui.css">
-    <script type="text/javascript" src="../static/js/jquery-2.1.0.js"></script>
-    <script type="text/javascript" src="../static/js/layui.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <link href="../static/css/layui.css" rel="stylesheet" type="text/css">
+    <script src="../static/js/jquery-2.1.0.js" type="text/javascript"></script>
+    <script src="../static/js/layui.js" type="text/javascript"></script>
+    <link href="../static/css/common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="layui-container">
@@ -31,9 +31,9 @@
             <div class="layui-card">
                 <div class="layui-tab layui-tab-card">
                     <ul class="layui-tab-title">
-                        <li >学生登录</li>
+                        <li>学生登录</li>
                     </ul>
-                    <form action="/student/verify" class="layui-form" >
+                    <form action="/student/verify" class="layui-form">
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
                                 <div class="layui-form-item">
@@ -41,19 +41,23 @@
                                         <label class="layui-form-label">用户名</label>
                                     </div>
                                     <div class="layui-input-inline" style="width: 65%;">
-                                        <input type="text" id="school_id" name="id"   placeholder="请输入学号" required lay-verify="required|number" autocomplete="off" class="layui-input">
+                                        <input autocomplete="off" class="layui-input" id="school_id" lay-verify="required|number" name="id"
+                                               placeholder="请输入学号" required type="text">
                                         <!--						<input type="text" name="username" required=""  placeholder="用户名"  >-->
                                     </div>
                                     <div class="layui-input-inline" style="width: 25%;">
                                         <label class="layui-form-label">密码</label>
                                     </div>
                                     <div class="layui-input-inline" style="width: 65%;">
-                                        <input type="password" id="password" name="password"  placeholder="请输入密码" required lay-verify="required" autocomplete="off" class="layui-input">
+                                        <input autocomplete="off" class="layui-input" id="password" lay-verify="required"
+                                               name="password" placeholder="请输入密码" required type="password">
                                     </div>
                                     <div class="login-btn">
-                                        <button class="layui-btn" type="submit" lay-submit lay-filter="login" >登录</button>
+                                        <button class="layui-btn" lay-filter="login" lay-submit type="submit">登录
+                                        </button>
                                         <a href="/admin/login">
-                                            <button class="layui-btn" type="button" style="margin-left: 20px">我是管理员</button>
+                                            <button class="layui-btn" style="margin-left: 20px" type="button">我是管理员
+                                            </button>
                                         </a>
                                     </div>
                                 </div>
@@ -67,7 +71,7 @@
 </div>
 <script type="text/javascript">
     //JavaScript代码区域
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
     });
 </script>

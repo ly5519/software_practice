@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
 
-<!--    指定首页-->
+    <!--    指定首页-->
     <welcome-file-list>
         <welcome-file>/HTML/login.html</welcome-file>
     </welcome-file-list>
 
 
-<!--    mvc代理servlet-->
+    <!--    mvc代理servlet-->
     <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -27,7 +27,7 @@
     </servlet-mapping>
 
 
-<!--    资源过滤防止中文乱码-->
+    <!--    资源过滤防止中文乱码-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -42,11 +42,10 @@
     </filter-mapping>
 
 
-<!--    超时时间-->
+    <!--    超时时间-->
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
-
 
 
 </web-app>

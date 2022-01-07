@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>管理员登录页面</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/layui.css">
-    <script type="text/javascript" src="../static/js/jquery-2.1.0.js"></script>
-    <script type="text/javascript" src="../static/js/layui.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <link href="../static/css/layui.css" rel="stylesheet" type="text/css">
+    <script src="../static/js/jquery-2.1.0.js" type="text/javascript"></script>
+    <script src="../static/js/layui.js" type="text/javascript"></script>
+    <link href="../static/css/common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="layui-container">
@@ -20,7 +20,8 @@
                     <br><br>
                     1、报告厅、会议室实行网上预约使用与管理。
                     <br><br>
-                    2、报告厅、会议室预约时段为：8:00-12:00，14:00-18:00， 19:00-22:00，超时段使用应在预约登记时做好备注说明。(提示：预约时间必须落在系统划定时间段内，时间需按照系统原有时间格式输入）
+                    2、报告厅、会议室预约时段为：8:00-12:00，14:00-18:00，
+                    19:00-22:00，超时段使用应在预约登记时做好备注说明。(提示：预约时间必须落在系统划定时间段内，时间需按照系统原有时间格式输入）
                     <br><br>
                     3、如报告厅、会议室多媒体设备使用前发生故障、损坏或配件丢失，要及时上报党政综合办公室，未及时上报发现后责任一律由最后使用人承担。<br><br><br>
                 </div>
@@ -31,9 +32,9 @@
             <div class="layui-card">
                 <div class="layui-tab layui-tab-card">
                     <ul class="layui-tab-title">
-                        <li >管理员登录</li>
+                        <li>管理员登录</li>
                     </ul>
-                    <form action="/admin/index" class="layui-form" >
+                    <form action="/admin/index" class="layui-form">
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
                                 <div class="layui-form-item">
@@ -42,20 +43,24 @@
                                         <label class="layui-form-label">用户名</label>
                                     </div>
                                     <div class="layui-input-inline" style="width: 65%;">
-                                        <input type="text" id="user" name="user"   placeholder="请输入用户名" required="" lay-verify="required" autocomplete="off" class="layui-input">
+                                        <input autocomplete="off" class="layui-input" id="user" lay-verify="required" name="user"
+                                               placeholder="请输入用户名" required="" type="text">
                                         <!--						<input type="text" name="username" required=""  placeholder="用户名"  >-->
                                     </div>
                                     <div class="layui-input-inline" style="width: 25%;">
                                         <label class="layui-form-label">密码</label>
                                     </div>
                                     <div class="layui-input-inline" style="width: 65%;">
-                                        <input type="password" id="password" name="password"  placeholder="请输入密码" required lay-verify="required" autocomplete="off" class="layui-input">
+                                        <input autocomplete="off" class="layui-input" id="password" lay-verify="required"
+                                               name="password" placeholder="请输入密码" required type="password">
                                         <!--						<input type="password" name="password" required=""  placeholder="密码" ><br><br>-->
                                     </div>
                                     <div class="login-btn">
-                                        <button class="layui-btn" type="submit" lay-submit lay-filter="login" >登录</button> <!--onclick="window.open('usercounter.html')"-->
+                                        <button class="layui-btn" lay-filter="login" lay-submit type="submit">登录
+                                        </button> <!--onclick="window.open('usercounter.html')"-->
                                         <a href="/student/login">
-                                            <button class="layui-btn" type="button" style="margin-left: 20px">我是学生</button>
+                                            <button class="layui-btn" style="margin-left: 20px" type="button">我是学生
+                                            </button>
                                         </a>
                                     </div>
                                 </div>

@@ -30,14 +30,14 @@
     </resultMap>
 
     <select id="selectCourseYouChoose" resultMap="swc">
-        SELECT s.id AS sId,
+        SELECT s.id   AS sId,
                s.name AS sName,
                sex,
                age,
                username,
                password,
                enrollment,
-               c.id AS cId,
+               c.id   AS cId,
                c.name AS cName,
                period,
                credit,
@@ -48,20 +48,20 @@
                grade,
                detail
         FROM student_with_course swc
-        JOIN course c on c.id = swc.course_id
-        JOIN student s on s.id = swc.student_id
+                 JOIN course c on c.id = swc.course_id
+                 JOIN student s on s.id = swc.student_id
         WHERE student_id = #{student_id}
     </select>
 
     <select id="selectSWCByCId" resultMap="swc">
-        SELECT s.id AS sId,
+        SELECT s.id   AS sId,
                s.name AS sName,
                sex,
                age,
                username,
                password,
                enrollment,
-               c.id AS cId,
+               c.id   AS cId,
                c.name AS cName,
                period,
                credit,
@@ -78,14 +78,14 @@
 
 
     <select id="selectCourseYouChooseType" resultMap="swc">
-        SELECT s.id AS sId,
+        SELECT s.id   AS sId,
                s.name AS sName,
                sex,
                age,
                username,
                password,
                enrollment,
-               c.id AS cId,
+               c.id   AS cId,
                c.name AS cName,
                period,
                credit,
@@ -97,17 +97,20 @@
         FROM student_with_course swc
                  JOIN course c on c.id = swc.course_id
                  JOIN student s on s.id = swc.student_id
-        WHERE student_id = #{student_id} AND course_id = #{course_id}
+        WHERE student_id = #{student_id}
+          AND course_id = #{course_id}
     </select>
 
     <insert id="elective" parameterType="int">
         INSERT INTO student_with_course(student_id, course_id)
-        VALUE (#{student_id}, #{course_id})
+            VALUE (#{student_id}, #{course_id})
     </insert>
 
     <delete id="removedCourse" parameterType="int">
-        DELETE FROM student_with_course
-        WHERE course_id = #{course_id} AND student_id = #{student_id}
+        DELETE
+        FROM student_with_course
+        WHERE course_id = #{course_id}
+          AND student_id = #{student_id}
     </delete>
 
 
@@ -115,7 +118,7 @@
         UPDATE student_with_course
         SET grade = #{grade}
         WHERE course_id = #{course_id}
-        AND student_id = #{student_id}
+          AND student_id = #{student_id}
     </update>
 
 

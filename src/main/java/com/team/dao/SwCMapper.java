@@ -11,17 +11,18 @@ import java.util.List;
  * @author Liu_Yan
  */
 public interface SwCMapper {
-  List<StudentWithCourse> selectCourseYouChoose(@Param("student_id") int id);
-  StudentWithCourse selectCourseYouChooseType(@Param("student_id") int id, @Param("course_id")int number);
-  List<StudentWithCourse> selectSWCByCId(@Param("course_id") int id);
+    List<StudentWithCourse> selectCourseYouChoose(@Param("student_id") int id);
 
+    StudentWithCourse selectCourseYouChooseType(@Param("student_id") int id, @Param("course_id") int number);
 
-  //add
-  void elective(@Param("student_id") int id, @Param("course_id")int number);
+    List<StudentWithCourse> selectSWCByCId(@Param("course_id") int id);
 
-  //del
-  void removedCourse(@Param("student_id") int id, @Param("course_id")int number);
+    //add
+    void elective(@Param("student_id") int id, @Param("course_id") int number);
 
-  //update
-  void updatedCourse(@Param("student_id") int id, @Param("course_id")int number, @Param("grade")int grade);
+    //del
+    void removedCourse(@Param("student_id") int id, @Param("course_id") int number);
+
+    //update
+    void updatedCourse(@Param("student_id") int id, @Param("course_id") int number, @Param("grade") int grade);
 }

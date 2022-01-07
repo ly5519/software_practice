@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentWithCourse{
+public class StudentWithCourse {
     private Student studentId;
     private Course courseId;
     private Double grade;

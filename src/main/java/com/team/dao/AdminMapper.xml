@@ -3,14 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.dao.AdminMapper">
-    <select id="selectAdminByUsername" parameterType="string" resultType="admin" >
-        SELECT * FROM admin WHERE username= #{username}
+    <select id="selectAdminByUsername" parameterType="string" resultType="admin">
+        SELECT *
+        FROM admin
+        WHERE username = #{username}
     </select>
 
     <update id="updateSWC" parameterType="sWC">
         UPDATE student_with_course
         SET grade = #{grade}
         WHERE course_id = #{course_id}
-        AND student_id = #{student_id}
+          AND student_id = #{student_id}
     </update>
 </mapper>

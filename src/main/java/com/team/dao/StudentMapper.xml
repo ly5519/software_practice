@@ -6,11 +6,10 @@
 <mapper namespace="com.team.dao.StudentMapper">
 
 
-    
     <select id="getMajorName" resultType="string">
         SELECT m.name
         FROM student s
-        JOIN major m on m.id = s.major
+                 JOIN major m on m.id = s.major
         WHERE s.id = #{id}
     </select>
 
@@ -27,14 +26,14 @@
     <insert id="addStudent" parameterType="student">
         INSERT
         INTO student
-        VALUE (#{id}, #{name}, #{sex}, #{age}, #{username}, #{password}, #{major}, #{enrollment})
+            VALUE (#{id}, #{name}, #{sex}, #{age}, #{username}, #{password}, #{major}, #{enrollment})
     </insert>
 
     <update id="updateStudent" parameterType="student">
         UPDATE student
-        SET  name=#{name},
-             sex=#{sex},
-             age=#{age},
+        SET name=#{name},
+            sex=#{sex},
+            age=#{age},
             username=#{username},
             password=#{password},
             major=#{major},
@@ -43,11 +42,15 @@
     </update>
 
     <delete id="deleteStudentById" parameterType="student">
-        DELETE FROM student WHERE id = #{id}
+        DELETE
+        FROM student
+        WHERE id = #{id}
     </delete>
 
     <select id="getAdminPassword" resultType="string">
-        SELECT password FROM admin WHERE username = #{username}
+        SELECT password
+        FROM admin
+        WHERE username = #{username}
     </select>
 
 </mapper>
